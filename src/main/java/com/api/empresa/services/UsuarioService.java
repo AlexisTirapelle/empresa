@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.api.empresa.models.UsuarioModel;
@@ -29,8 +31,8 @@ public class UsuarioService {
 		return usuarioRepository.existsByNome(nome);
 	}
 
-	public List<UsuarioModel> findAll() {
-		return usuarioRepository.findAll();
+	public Page<UsuarioModel> findAll(Pageable pageable) {
+		return usuarioRepository.findAll(pageable);
 	}
 
 	public Optional<UsuarioModel> findById(UUID id) {
