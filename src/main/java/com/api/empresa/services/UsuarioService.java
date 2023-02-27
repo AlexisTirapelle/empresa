@@ -1,6 +1,8 @@
 package com.api.empresa.services;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,15 @@ public class UsuarioService {
 
 	public List<UsuarioModel> findAll() {
 		return usuarioRepository.findAll();
+	}
+
+	public Optional<UsuarioModel> findById(UUID id) {
+		return usuarioRepository.findById(id);
+	}
+
+	@Transactional
+	public void delete(UsuarioModel usuarioModel) {
+		usuarioRepository.delete(usuarioModel);
 	}
 	
 }
